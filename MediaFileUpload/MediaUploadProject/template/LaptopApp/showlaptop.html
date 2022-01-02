@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}
+    <title>Show Laptop Page</title>
+{% endblock %}
+{% block content %}
+    <h1 style="text-align:center;color:orange">Laptop Details</h1>
+    <table class="table table-striped table-dark" style="width:90%;margin:auto">
+        <tr >
+            <th>ID</th>
+            <th>Company Name</th>
+            <th>Model Name</th>
+            <th>RAM</th>
+            <th>ROM</th>
+            <th>Processor</th>
+            <th>Price</th>
+            <th>Weight</th>
+            <th>Product Details</th>
+
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for laptop in laptop_list %}
+            <tr >
+                <td>{{laptop.id}}</td>
+                <td>{{laptop.comapny}}</td>
+                <td>{{laptop.model_name}}</td>
+                <td>{{laptop.ram}}</td>
+                <td>{{laptop.rom}}</td>
+                <td>{{laptop.processor}}</td>
+                <td>{{laptop.price}}</td>
+                <td>{{laptop.weight}}</td>
+               <td><a href="{% url 'details' laptop.id %}"><button class="btn btn-info">Details</button></a></td>
+
+                <td><a href="{% url 'update' laptop.id %}"><button class="btn btn-warning">Update</button></a></td>
+                <td><a href="{% url 'delete' laptop.id %}"><button class="btn btn-danger">Delete</button></a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{% url 'add_laptop' %}"><button class="btn btn-success" style="margin-left:4.5%">AddLaptop</button></a>
+{% endblock %}
